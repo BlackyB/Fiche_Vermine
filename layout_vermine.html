@@ -1,14 +1,12 @@
 
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style_vermine.css">
-
-
-
-
-
-
+	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab1 sheet-radio-tab" value="1" checked="checked">
+	<p>Page Principale</p>
+	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab2 sheet-radio-tab" value="2">
+	<p>Page Secondaire</p>
 <!-- sheet-sheet-wrapper -->
-<div class="charsheet sheet-wrapper sheet-flex-col">
+<div class="sheet-tab-content sheet-tab1 charsheet sheet-wrapper sheet-flex-col">
 	<!-- Header div -->
 
 	<div class="sheet-flex-row sheet-w-100 sheet-around">
@@ -58,7 +56,7 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Vigueur</p>
-					<button type="roll" value="/roll @{Vigor}d10 (@{character_name} effectue un test de vigueur)"/>
+					<button type="roll" value="/roll [[@{Vigor}+@{Physical_Pos1}+@{Physical_Pos2}-@{Physical_Neg1}-@{Physical_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de vigueur)"/>
 				</div>
 			</div>
 			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
@@ -67,20 +65,34 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Santé</p>
-					<button type="roll" value="/roll @{Health}d10 (@{character_name} effectue un test de santé)"/>
+					<button type="roll" value="/roll [[@{Health}+@{Physical_Pos1}+@{Physical_Pos2}-@{Physical_Neg1}-@{Physical_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de santé)"/>
 				</div>
 			</div>
 			<div class="sheet-flex-row sheet-mt-50">
 				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left">
-					<p class="sheet-rotate-neg90 sheet-reposition">-1D</p>
-					<input type="checkbox" style="opacity: 0" name="attr_Physical_Neg1">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>-1D</p>
+						<input type="checkbox" name="attr_Physical_Neg1" value="1">
+					</div>
 				</label>
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-rotate-neg90 sheet-reposition">+1D</p></div>
-				<input type="checkbox" hidden name="attr_Physical_Pos1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-rotate-neg90 sheet-reposition">-2D</p></div>
-				<input type="checkbox" hidden name="attr_Physical_Neg2">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-rotate-neg90 sheet-reposition">+2D</p></div>
-				<input type="checkbox" hidden name="attr_Physical_Pos2">
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>+1D</p>
+						<input type="checkbox" name="attr_Physical_Pos1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>-2D</p>
+						<input type="checkbox" name="attr_Physical_Neg2" value="2">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>+2D</p>
+						<input type="checkbox" name="attr_Physical_Pos2" value="2">
+					</div>
+				</label>
 			</div>
 		</div>
 		<div class="sheet-w-25 sheet-flex-col sheet-center">
@@ -91,7 +103,7 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Précision</p>
-					<button type="roll" value="/roll @{Accuracy}d10 (@{character_name} effectue un test de précision)"/>
+					<button type="roll" value="/roll [[@{Accuracy}+@{Handy_Pos1}+@{Handy_Pos2}-@{Handy_Neg1}-@{Handy_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de précision)"/>
 				</div>
 			</div>
 			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
@@ -100,18 +112,34 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Réflexes</p>
-					<button type="roll" value="/roll @{Reflex}d10 (@{character_name} effectue un test de réflexes)"/>
+					<button type="roll" value="/roll [[@{Reflex}+@{Handy_Pos1}+@{Handy_Pos2}-@{Handy_Neg1}-@{Handy_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de réflexes)"/>
 				</div>
 			</div>
 			<div class="sheet-flex-row sheet-symetric sheet-mt-50">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-reset-position">-1D</p></div>
-				<input type="checkbox" hidden name="attr_Handy_Neg1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-reset-position">+1D</p></div>
-				<input type="checkbox" hidden name="attr_Handy_Pos1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-reset-position">-2D</p></div>
-				<input type="checkbox" hidden name="attr_Handy_Neg2">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-reset-position">+2D</p></div>
-				<input type="checkbox" hidden name="attr_Handy_Pos2">
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>-1D</p>
+						<input type="checkbox" name="attr_Handy_Neg1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>+1D</p>
+						<input type="checkbox" name="attr_Handy_Pos1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>-2D</p>
+						<input type="checkbox" name="attr_Handy_Neg2" value="2">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>+2D</p>
+						<input type="checkbox" name="attr_Handy_Pos2" value="2">
+					</div>
+				</label>
 			</div>
 		</div>
 		<div class="sheet-w-25 sheet-flex-col sheet-center">
@@ -122,7 +150,7 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Savoir</p>
-					<button type="roll" value="/roll @{Knowledge}d10 (@{character_name} effectue un test de savoir)"/>
+					<button type="roll" value="/roll [[@{Knowledge}+@{Intellect_Pos1}+@{Intellect_Pos2}-@{Intellect_Neg1}-@{Intellect_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de savoir)"/>
 				</div>
 			</div>
 			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
@@ -131,18 +159,34 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Perception</p>
-					<button type="roll" value="/roll @{Perception}d10 (@{character_name} effectue un test de perception)"/>
+					<button type="roll" value="/roll [[@{Perception}+@{Intellect_Pos1}+@{Intellect_Pos2}-@{Intellect_Neg1}-@{Intellect_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de perception)"/>
 				</div>
 			</div>
 			<div class="sheet-flex-row sheet-mt-50">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-rotate-neg90 sheet-reposition">-1D</p></div>
-				<input type="checkbox" hidden name="attr_Intellect_Neg1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-rotate-neg90 sheet-reposition">+1D</p></div>
-				<input type="checkbox" hidden name="attr_Intellect_Pos1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-rotate-neg90 sheet-reposition">-2D</p></div>
-				<input type="checkbox" hidden name="attr_Intellect_Neg2">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-rotate-neg90 sheet-reposition">+2D</p></div>
-				<input type="checkbox" hidden name="attr_Intellect_Pos2">
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>-1D</p>
+						<input type="checkbox" name="attr_Intellect_Neg1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>+1D</p>
+						<input type="checkbox" name="attr_Intellect_Pos1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>-2D</p>
+						<input type="checkbox" name="attr_Intellect_Neg2" value="2">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right">
+					<div class="sheet-rotate-neg90 sheet-reposition sheet-flex-col sheet-center">
+						<p>+2D</p>
+						<input type="checkbox" name="attr_Intellect_Pos2" value="2">
+					</div>
+				</label>
 			</div>
 		</div>
 		<div class="sheet-w-25 sheet-flex-col sheet-center">
@@ -153,7 +197,7 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Volonté</p>
-					<button type="roll" value="/roll @{Willpower}d10 (@{character_name} effectue un test de volonté)"/>
+					<button type="roll" value="/roll [[@{Willpower}+@{Social_Pos1}+@{Social_Pos2}-@{Social_Neg1}-@{Social_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test de volonté)"/>
 				</div>
 			</div>
 			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
@@ -162,18 +206,34 @@
 				</div>
 				<div class="sheet-w-50 sheet-flex-col sheet-center">
 					<p>Empathie</p>
-					<button type="roll" value="/roll @{Empathy}d10 (@{character_name} effectue un test d'empathie)"/>
+					<button type="roll" value="/roll [[@{Empathy}+@{Social_Pos1}+@{Social_Pos2}-@{Social_Neg1}-@{Social_Neg2}+ ?{modifier|0}]]d10 (@{character_name} effectue un test d'empathie)"/>
 				</div>
 			</div>
 			<div class="sheet-flex-row sheet-symetric sheet-mt-50">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-reset-position">-1D</p></div>
-				<input type="checkbox" hidden name="attr_Social_Neg1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-reset-position">+1D</p></div>
-				<input type="checkbox" hidden name="attr_Social_Pos1">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-reset-position">-2D</p></div>
-				<input type="checkbox" hidden name="attr_Social_Neg2">
-				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-reset-position">+2D</p></div>
-				<input type="checkbox" hidden name="attr_Social_Pos2">
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>-1D</p>
+						<input type="checkbox" name="attr_Social_Neg1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>+1D</p>
+						<input type="checkbox" name="attr_Social_Pos1" value="1">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>-2D</p>
+						<input type="checkbox" name="attr_Social_Neg2" value="2">
+					</div>
+				</label>
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right">
+					<div class="sheet-reset-position sheet-flex-col sheet-center">
+						<p>+2D</p>
+						<input type="checkbox" name="attr_Social_Pos2" value="2">
+					</div>
+				</label>
 			</div>
 		</div>
 	</div>
@@ -648,8 +708,9 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- End Specialities -->
-
 </div>
+	<!-- End Specialities -->
+<div class="sheet-tab-content sheet-tab2 charsheet sheet-wrapper sheet-flex-col">
+</div>
+
 <!-- End wrapper -->

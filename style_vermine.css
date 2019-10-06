@@ -1,4 +1,4 @@
-.charsheet div, .charsheet section{
+.charsheet div, .charsheet section, .charsheet label{
 	box-sizing: border-box;
 }
 
@@ -190,15 +190,6 @@
     -moz-appearance:textfield; /* Firefox */
 }
 
-.charsheet input[type=reset] {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	border: none;
-    background: no-repeat center center url("trash.png");
-}
-
-
 .sheet-hexagon {
 	position: relative;
 	width: 60px; 
@@ -331,14 +322,13 @@
 	transform: scaleX(-1);
 }
 .sheet-reposition{
-	margin-right: 2px;
-	margin-top: -2px;
+	margin-top: -3px;
 	z-index: 10;
 }
 
 .sheet-reset-position{
 	transform: scaleY(1) scaleX(-1) rotate(90deg);
-	margin-top: 12px;
+	margin-top: -3px;
 }
 
 .sheet-resume-box{
@@ -346,4 +336,15 @@
 	text-align: center;
 	width: 20px !important;
 	margin: 10px;
+}
+div.sheet-tab-content { display: none; }
+
+input.sheet-tab1:checked ~ div.sheet-tab1,
+input.sheet-tab2:checked ~ div.sheet-tab2,
+input.sheet-tab3:checked ~ div.sheet-tab3,
+input.sheet-tab4:checked ~ div.sheet-tab4 { display: block; }
+
+.sheet-radio-tab{
+	height: 50px !important;
+	width: 50px !important;
 }
