@@ -1,0 +1,655 @@
+
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style_vermine.css">
+
+
+
+
+
+
+<!-- sheet-sheet-wrapper -->
+<div class="charsheet sheet-wrapper sheet-flex-col">
+	<!-- Header div -->
+
+	<div class="sheet-flex-row sheet-w-100 sheet-around">
+		<div class="sheet-flex-col">
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h1 class="sheet-pr-10">Nom</h1>
+				<input class="sheet-spec-input sheet-txt-right" type="text" name="attr_character_name">
+			</div>
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h2 class="sheet-pr-10">Profil</h2>
+				<input class="sheet-spec-input sheet-txt-right" type="text" name="attr_Profile">
+			</div>
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h3 class="sheet-pr-10">Age</h3>
+				<input class="sheet-spec-input sheet-txt-right" type="text" name="attr_Age">
+			</div>
+		</div>
+		<div class="sheet-flex-col">
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h1>Totem</h1>
+				<input class="sheet-spec-input sheet-txt-right" type="text" name="attr_Totem">
+			</div>
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h2 class="sheet-pr-10">Réputation</h2>
+				<input class="sheet-spec-input sheet-txt-right" type="number" name="attr_Reputation" min="1" max="10" step="1" value="10">
+			</div>
+			<div class="sheet-flex-row sheet-between sheet-center">
+				<h3 class="sheet-pr-10">Experience</h3>
+				<input class="sheet-spec-input sheet-txt-right" type="text" name="attr_Experience">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Header div -->
+
+	<div class="sheet-liner"></div>
+
+	<!-- Attributes div -->
+	<h2 class="sheet-txt-center">Caractéristiques</h2>
+
+	<div class="sheet-flex-row sheet-w-100 sheet-around">
+		<div class="sheet-w-25 sheet-flex-col sheet-center">
+		<h3>Physiques</h3>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-col sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Vigor">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Vigueur</p>
+					<button type="roll" value="/roll @{Vigor}d10 (@{character_name} effectue un test de vigueur)"/>
+				</div>
+			</div>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Health">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Santé</p>
+					<button type="roll" value="/roll @{Health}d10 (@{character_name} effectue un test de santé)"/>
+				</div>
+			</div>
+			<div class="sheet-flex-row sheet-mt-50">
+				<label class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left">
+					<p class="sheet-rotate-neg90 sheet-reposition">-1D</p>
+					<input type="checkbox" style="opacity: 0" name="attr_Physical_Neg1">
+				</label>
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-rotate-neg90 sheet-reposition">+1D</p></div>
+				<input type="checkbox" hidden name="attr_Physical_Pos1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-rotate-neg90 sheet-reposition">-2D</p></div>
+				<input type="checkbox" hidden name="attr_Physical_Neg2">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-rotate-neg90 sheet-reposition">+2D</p></div>
+				<input type="checkbox" hidden name="attr_Physical_Pos2">
+			</div>
+		</div>
+		<div class="sheet-w-25 sheet-flex-col sheet-center">
+		<h3>Manuelles</h3>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Accuracy">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Précision</p>
+					<button type="roll" value="/roll @{Accuracy}d10 (@{character_name} effectue un test de précision)"/>
+				</div>
+			</div>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Reflex">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Réflexes</p>
+					<button type="roll" value="/roll @{Reflex}d10 (@{character_name} effectue un test de réflexes)"/>
+				</div>
+			</div>
+			<div class="sheet-flex-row sheet-symetric sheet-mt-50">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-reset-position">-1D</p></div>
+				<input type="checkbox" hidden name="attr_Handy_Neg1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-reset-position">+1D</p></div>
+				<input type="checkbox" hidden name="attr_Handy_Pos1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-reset-position">-2D</p></div>
+				<input type="checkbox" hidden name="attr_Handy_Neg2">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-reset-position">+2D</p></div>
+				<input type="checkbox" hidden name="attr_Handy_Pos2">
+			</div>
+		</div>
+		<div class="sheet-w-25 sheet-flex-col sheet-center">
+		<h3>Mentales</h3>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Knowledge">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Savoir</p>
+					<button type="roll" value="/roll @{Knowledge}d10 (@{character_name} effectue un test de savoir)"/>
+				</div>
+			</div>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Perception">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Perception</p>
+					<button type="roll" value="/roll @{Perception}d10 (@{character_name} effectue un test de perception)"/>
+				</div>
+			</div>
+			<div class="sheet-flex-row sheet-mt-50">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-rotate-neg90 sheet-reposition">-1D</p></div>
+				<input type="checkbox" hidden name="attr_Intellect_Neg1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-rotate-neg90 sheet-reposition">+1D</p></div>
+				<input type="checkbox" hidden name="attr_Intellect_Pos1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-rotate-neg90 sheet-reposition">-2D</p></div>
+				<input type="checkbox" hidden name="attr_Intellect_Neg2">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-rotate-neg90 sheet-reposition">+2D</p></div>
+				<input type="checkbox" hidden name="attr_Intellect_Pos2">
+			</div>
+		</div>
+		<div class="sheet-w-25 sheet-flex-col sheet-center">
+		<h3>Sociales</h3>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Willpower">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Volonté</p>
+					<button type="roll" value="/roll @{Willpower}d10 (@{character_name} effectue un test de volonté)"/>
+				</div>
+			</div>
+			<div class="sheet-w-100 sheet-flex-row sheet-center sheet-around">
+				<div class="sheet-rotate-90 sheet-hexagon sheet-w-50 sheet-flex-row sheet-center">
+					<input class="sheet-big-Text sheet-rotate-neg90 sheet-spec-input sheet-short-input" type="number" min="0" max="4" step="1"  value="0" name="attr_Empathy">
+				</div>
+				<div class="sheet-w-50 sheet-flex-col sheet-center">
+					<p>Empathie</p>
+					<button type="roll" value="/roll @{Empathy}d10 (@{character_name} effectue un test d'empathie)"/>
+				</div>
+			</div>
+			<div class="sheet-flex-row sheet-symetric sheet-mt-50">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-left"><p class="sheet-reset-position">-1D</p></div>
+				<input type="checkbox" hidden name="attr_Social_Neg1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-top-right"><p class="sheet-reset-position">+1D</p></div>
+				<input type="checkbox" hidden name="attr_Social_Pos1">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-left"><p class="sheet-reset-position">-2D</p></div>
+				<input type="checkbox" hidden name="attr_Social_Neg2">
+				<div class="sheet-small-hexagon sheet-rotate-90 sheet-hexa-bottom-right"><p class="sheet-reset-position">+2D</p></div>
+				<input type="checkbox" hidden name="attr_Social_Pos2">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Attributes div -->
+
+	<div class="sheet-liner"></div>
+
+	<!-- Skills div -->
+	<h2 class="sheet-txt-center">Compétences</h2>
+
+	<div class="sheet-w-100 sheet-flex-col">
+
+		<!-- First sheet-flex-row -->
+		<div class="sheet-flex-row sheet-center sheet-spacer sheet-wrap">
+
+			<!-- L'Homme -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20">
+				<label class="sheet-w-100 sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="1" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">L'Homme</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Arts (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Arts" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Arts">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Arts">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Arts">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Arts">
+						<input class="sheet-resume-box" type="number" name="attr_Arts_Resume" value="@{Arts}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Civilisation (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Civilisation" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Civilisation">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Civilisation">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Civilisation">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Civilisation">
+						<input class="sheet-resume-box" type="number" name="attr_Civilisation_Resume" value="@{Civilisation}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Psychologie (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Psychology" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Psychology">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Psychology">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Psychology">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Psychology">
+						<input class="sheet-resume-box" type="number" name="attr_Psychology_Resume" value="@{Psychology}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Rumeurs</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Rumors" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Rumors">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Rumors">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Rumors">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Rumors">
+						<input class="sheet-resume-box" type="number" name="attr_Rumors_Resume" value="@{Rumors}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Soins (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_First_Aid" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_First_Aid">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_First_Aid">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_First_Aid">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_First_Aid">
+						<input class="sheet-resume-box" type="number" name="attr_First_Aid_Resume" value="@{First_Aid}" disabled="true">
+					</div>
+				</div>
+			</div>
+
+			<!-- La Machine -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20">
+				<label class="sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="2" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">La Machine</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Artisanat (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Craftmanship" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Craftmanship">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Craftmanship">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Craftmanship">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Craftmanship">
+						<input class="sheet-resume-box" type="number" name="attr_Crafmanship_Resume" value="@{Craftmanship}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Bricolage</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_DIY" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_DIY">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_DIY">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_DIY">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_DIY">
+						<input class="sheet-resume-box" type="number" name="attr_DIY_Resume" value="@{DIY}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Mécanique (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Mechanic" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Mechanic">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Mechanic">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Mechanic">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Mechanic">
+						<input class="sheet-resume-box" type="number" name="attr_Mechanic_Resume" value="@{Mechanic}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Pilotage (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Driving" checked>
+						<input class="sheet-radio" type="radio" value="1" name="attr_Driving">
+						<input class="sheet-radio" type="radio" value="2" name="attr_Driving">
+						<input class="sheet-radio" type="radio" value="3" name="attr_Driving">
+						<input class="sheet-radio" type="radio" value="4" name="attr_Driving">
+						<input class="sheet-resume-box" type="number" name="attr_Driving_Resume" value="@{Driving}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Technologie (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Technology" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Technology">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Technology">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Technology">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Technology">
+						<input class="sheet-resume-box" type="number" name="attr_Technology_Resume" value="@{Technology}" disabled="true">
+					</div>
+				</div>
+			</div>
+
+			<!-- L'Arme -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20">
+				<label class="sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="3" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">L'Arme</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Armes à feu (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Firearm" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Firearm">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Firearm">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Firearm">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Firearm">
+						<input class="sheet-resume-box" type="number" name="attr_Firearm_Resume" value="@{Firearm}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Armes de tir</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Ranged_Weapon" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Ranged_Weapon">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Ranged_Weapon">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Ranged_Weapon">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Ranged_Weapon">
+						<input class="sheet-resume-box" type="number" name="attr_Ranged_Weapon_Resume" value="@{Ranged_Weapon}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Armurerie (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Armory" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Armory">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Armory">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Armory">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Armory">
+						<input class="sheet-resume-box" type="number" name="attr_Armory_Resume" value="@{Armory}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Lancer</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Throw" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Throw">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Throw">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Throw">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Throw">
+						<input class="sheet-resume-box" type="number" name="attr_Throw_Resume" value="@{Throw}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Mêlée</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Melee" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Melee">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Melee">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Melee">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Melee">
+						<input class="sheet-resume-box" type="number" name="attr_Melee_Resume" value="@{Melee}" disabled="true">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- End of first sheet-flex-row -->
+
+	<!-- Second sheet-flex-row -->
+
+		<div class="sheet-flex-row sheet-center sheet-spacer sheet-wrap">
+
+			<!-- L'Animal -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20 sheet-txt-center">
+				<label class="sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">L'Animal</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Animalisme (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Animalism" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Animalism">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Animalism">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Animalism">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Animalism">
+						<input class="sheet-resume-box" type="number" name="attr_Animalism_Resume" value="@{Animalism}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Dissection (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Dissection" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Dissection">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Dissection">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Dissection">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Dissection">
+						<input class="sheet-resume-box" type="number" name="attr_Dissection_Resume" value="@{Dissection}" disabled="true">						
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Faune (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Wildlife" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Wildlife">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Wildlife">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Wildlife">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Wildlife">
+						<input class="sheet-resume-box" type="number" name="attr_Wildlife_Resume" value="@{Wildlife}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Répulsion</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Exterminator" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Exterminator">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Exterminator">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Exterminator">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Exterminator">
+						<input class="sheet-resume-box" type="number" name="attr_Exterminator_Resume" value="@{Exterminator}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Traces</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Tracking" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Tracking">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Tracking">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Tracking">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Tracking">
+						<input class="sheet-resume-box" type="number" name="attr_Tracking_Resume" value="@{Tracking}" disabled="true">
+					</div>
+				</div>
+			</div>
+
+			<!-- La Survie -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20">
+				<label class="sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="5" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">La Survie</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Alimentation</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Food_Supply" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Food_Supply">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Food_Supply">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Food_Supply">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Food_Supply">
+						<input class="sheet-resume-box" type="number" name="attr_Food_Supply_Resume" value="@{Food_Supply}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Athlétisme</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Athletics" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Athletics">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Athletics">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Athletics">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Athletics">
+						<input class="sheet-resume-box" type="number" name="attr_Athletics_Resume" value="@{Athletics}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Corps à corps</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Fight" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Fight">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Fight">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Fight">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Fight">
+						<input class="sheet-resume-box" type="number" name="attr_Fight_Resume" value="@{Fight}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Discrétion</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Stealth" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Stealth">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Stealth">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Stealth">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Stealth">
+						<input class="sheet-resume-box" type="number" name="attr_Stealth_Resume" value="@{Stealth}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Vigilance</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Vigilant" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Vigilant">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Vigilant">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Vigilant">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Vigilant">
+						<input class="sheet-resume-box" type="number" name="attr_Vigilant_Resume" value="@{Vigilant}" disabled="true">
+					</div>
+				</div>
+			</div>
+			
+			<!-- La Terre -->
+			<div class="sheet-w-33 sheet-flex-col sheet-center sheet-p-20">
+				<label class="sheet-flex-row sheet-center">
+					<input class="sheet-radio sheet-radio-4" type="radio" value="6" name="attr_Main_Skill_Field">
+					<h3 class="sheet-my-20">La Terre</h3>
+				</label>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Vestiges (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Remains" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Remains">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Remains">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Remains">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Remains">
+						<input class="sheet-resume-box" type="number" name="attr_Remains_Resume" value="@{Remains}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Flore (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Flora" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Flora">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Flora">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Flora">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Flora">
+						<input class="sheet-resume-box" type="number" name="attr_Flora_Resume" value="@{Flora}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Route</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Road" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Road">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Road">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Road">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Road">
+						<input class="sheet-resume-box" type="number" name="attr_Road_Resume" value="@{Road}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Environnement (I)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Environment" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Environment">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Environment">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Environment">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Environment">
+						<input class="sheet-resume-box" type="number" name="attr_Environment_Resume" value="@{Environment}" disabled="true">
+					</div>
+				</div>
+				<div class="sheet-w-100 sheet-flex-col sheet-center sheet-between">
+					<p>Toxiques (II)</p>
+					<div class="sheet-flex-row sheet-center">
+						<input class="sheet-radio-empty" type="radio" value="0" name="attr_Poisonous" checked>
+						<input class="sheet-radio sheet-radio-1" type="radio" value="1" name="attr_Poisonous">
+						<input class="sheet-radio sheet-radio-2" type="radio" value="2" name="attr_Poisonous">
+						<input class="sheet-radio sheet-radio-3" type="radio" value="3" name="attr_Poisonous">
+						<input class="sheet-radio sheet-radio-4" type="radio" value="4" name="attr_Poisonous">
+						<input class="sheet-resume-box" type="number" name="attr_Poisonous_Resume" value="@{Poisonous}" disabled="true">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- End of second sheet-flex-row -->
+
+		<div class="sheet-w-90 sheet-txt-center sheet-flex-row sheet-between sheet-spacer">
+			<div class="sheet-flex-col sheet-center sheet-between">
+				<p>Débutant</p>
+				<div class="sheet-flex-row sheet-center">
+					<input class="sheet-radio" type="radio" value="1" disabled checked name="attr_Exemple_01">
+					<input class="sheet-radio" type="radio" value="2" disabled name="attr_Exemple_01">
+					<input class="sheet-radio" type="radio" value="3" disabled name="attr_Exemple_01">
+					<input class="sheet-radio" type="radio" value="4" disabled name="attr_Exemple_01">
+				</div>
+				<p>(+<span class="number">1</span>D)</p>
+			</div>
+			<div class="sheet-flex-col sheet-center sheet-between">
+				<p>Confirmé</p>
+				<div class="sheet-flex-row sheet-center">
+					<input class="sheet-radio" type="radio" value="1" disabled name="attr_Exemple_02">
+					<input class="sheet-radio" type="radio" value="2" disabled checked name="attr_Exemple_02">
+					<input class="sheet-radio" type="radio" value="3" disabled name="attr_Exemple_02">
+					<input class="sheet-radio" type="radio" value="4" disabled name="attr_Exemple_02">
+				</div>
+				<p>(+1D / +1 Relance)</p>
+			</div>
+			<div class="sheet-flex-col sheet-center sheet-between">
+				<p>Expert</p>
+				<div class="sheet-flex-row sheet-center">
+					<input class="sheet-radio" type="radio" value="1" disabled name="attr_Exemple_03">
+					<input class="sheet-radio" type="radio" value="2" disabled name="attr_Exemple_03">
+					<input class="sheet-radio" type="radio" value="3" disabled checked name="attr_Exemple_03">
+					<input class="sheet-radio" type="radio" value="4" disabled name="attr_Exemple_03">
+				</div>
+				<p>(+2D / +1 Relance)</p>
+			</div>
+			<div class="sheet-flex-col sheet-center sheet-between">
+				<p>Maître</p>
+				<div class="sheet-flex-row sheet-center">
+					<input class="sheet-radio" type="radio" value="1" disabled name="attr_Exemple_04">
+					<input class="sheet-radio" type="radio" value="2" disabled name="attr_Exemple_04">
+					<input class="sheet-radio" type="radio" value="3" disabled name="attr_Exemple_04">
+					<input class="sheet-radio" type="radio" value="4" disabled checked name="attr_Exemple_04">
+				</div>
+				<p>(+2D / +2 Relance)</p>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- End Skills div -->
+
+	<div class="sheet-liner"></div>
+
+	<!-- Specialities -->
+
+	<div class="sheet-w-100 sheet-flex-row sheet-center">
+		
+		<div class="sheet-w-100 sheet-flex-col sheet-p-20">	
+			<h2 class="sheet-txt-center">Spécialités</h2>
+			<div class="sheet-flex-row">
+				<div class="sheet-flex-col sheet-w-50">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_01">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_02">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_03">
+				</div>
+				<div class="sheet-flex-col sheet-w-50">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_04">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_05">
+					<input class="sheet-w-100 sheet-spec-input" type="text" name="attr_Specialization_06">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- End Specialities -->
+
+</div>
+<!-- End wrapper -->
